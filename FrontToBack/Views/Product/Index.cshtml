@@ -1,0 +1,35 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<section id="products">
+    <div class="container">
+        <div class="row" id="productList">
+            <input hidden value="@ViewBag.Products" id="productsCount" />
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item text-center" data-id="@item.Category.Name.ToLower()">
+                        <div class="img">
+                            <a href="">
+                                <img src="~/img/@item.Image" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="title mt-3">
+                            <h6>@item.Name</h6>
+                        </div>
+                        <div class="price">
+                            <a class="text-black-50 add-to-basket" asp-action="AddToBasket" asp-route-id="@item.Id" >Add to cart</a>
+                            <span class="text-black-50">$@item.Price</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <button class="btn btn-info" id="loadMore">Load more...</button>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,19 @@
+﻿@model ProductBasketViewModel
+<i class="fas fa-shopping-bag"></i>
+<sup class="rounded-circle">@Model.ProductItemBasketViewModels.Count</sup>
+<span>CART ($@Model.TotalPrice)</span>
+<ul class="list-unstyled py-3">
+    @if (Model.ProductItemBasketViewModels.Count == 0)
+    {
+
+
+        <li class="">No products in the cart.</li>
+    }
+    else
+    {
+        foreach (var product in Model.ProductItemBasketViewModels)
+        {
+            <li class="">@product.Product.Name x @product.Count - @product.Product.Price</li>
+        }
+    }
+</ul>
